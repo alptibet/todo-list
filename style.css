@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.header {
+  width: 100%;
+  background-image: url(/assets/bg-desktop-light.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 8rem 2rem;
+}
+.header__content {
+  width: 45%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+}
+.header__content h1 {
+  font-size: 4.2rem;
+  color: #fff;
+}
+.header__content a {
+  cursor: pointer;
+}
+.header__input {
+  width: 45%;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 1.2rem 3rem;
+  border-radius: 6px;
+}
+.header__input-todo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+.header__input-todo input[type=checkbox] {
+  visibility: hidden;
+}
+.header__input-todo label {
+  background-color: #fff;
+  border: 1px solid #d2d3db;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 2.4rem;
+  height: 2.4rem;
+  position: absolute;
+  left: -1rem;
+  top: 0.6rem;
+}
+.header__input .todo__checkbox {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+.header__input .todo__textbox {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  color: #484b6a;
+  border: none;
+  width: 100%;
+  padding: 1rem;
+  margin-left: 1rem;
+}
+.header__input .todo__textbox::placeholder {
+  color: #9394a5;
+}
+.header__input .todo__textbox:focus {
+  outline-width: 0;
+  caret-color: #484b6a;
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+}
