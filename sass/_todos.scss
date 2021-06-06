@@ -1,43 +1,31 @@
-.header {
+.todos {
   width: 100%;
-  background-image: url(/assets/bg-desktop-light.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 8rem 2rem;
+  padding: 0rem 2rem;
+  position: relative;
 
-  &__content {
-    width: 45%;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 4rem;
-
-    h1 {
-      font-size: 4.2rem;
-      color: $color-white;
-    }
-
-    a {
-      cursor: pointer;
-    }
+  & > :first-child {
+    border-top: 1px solid $color-white;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
   }
 
-  &__input {
+  &__item {
     width: 45%;
     margin: 0 auto;
     background-color: $color-white;
     padding: 1.2rem 3rem;
-    border-radius: 6px;
+    border-bottom: 1px solid $color-light-grayish-blue;
 
-    &-todo {
+    &-form {
       display: flex;
       align-items: center;
       justify-content: flex-start;
       position: relative;
 
-      input[type='checkbox'] {
-        visibility: hidden;
+      p {
+        font-size: 1.8rem;
+        padding: 1rem 2rem;
+        color: $color-very-dark-grayish-blue;
       }
 
       label {
@@ -51,15 +39,37 @@
         left: -1rem;
         top: 0.6rem;
       }
+
+      label:after {
+        content: url(/assets/icon-check.svg);
+        height: 6px;
+        width: 12px;
+        position: absolute;
+        top: 7px;
+        left: 6px;
+        opacity: 0;
+      }
+
+      input[type='checkbox'] {
+        visibility: hidden;
+      }
+
+      input[type='checkbox']:checked + label {
+        background: $color-gradient;
+      }
+
+      input[type='checkbox']:checked + label::after {
+        opacity: 1;
+      }
     }
 
-    .todo__checkbox {
+    &-checkbox {
       width: 2rem;
       height: 2rem;
       cursor: pointer;
     }
 
-    .todo__textbox {
+    &-textbox {
       font-family: $font-primary;
       font-weight: 400;
       font-size: 1.8rem;
@@ -68,14 +78,10 @@
       width: 100%;
       padding: 1rem;
       margin-left: 1rem;
+      cursor: pointer;
 
       &::placeholder {
         color: $color-dark-grayish-blue;
-      }
-
-      &:focus {
-        outline-width: 0;
-        caret-color: $color-very-dark-grayish-blue;
       }
     }
   }
