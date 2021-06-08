@@ -127,6 +127,7 @@ body {
   font-size: 1.8rem;
   padding: 1rem 2rem;
   color: #484b6a;
+  cursor: pointer;
 }
 .todos__item-form label {
   background-color: #fff;

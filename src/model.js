@@ -9,10 +9,6 @@ export const createToDoItem = function (data) {
   state.push(newToDo);
 };
 
-const deleteToDo = function (todo) {
-  //code here
-};
-
 const completeTodo = function (todo) {
   //code here
 };

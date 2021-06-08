@@ -28,6 +28,20 @@ export const renderToDo = function (state) {
   todoList.insertAdjacentHTML('beforeend', markup);
 };
 
+export const addHandlerCompleteToDo = function () {
+  const parentElement = document.querySelectorAll('.todos__item-form');
+  parentElement.forEach(item => {
+    item.addEventListener('click', function (e) {
+      if (e.target.className !== 'todos__item-checkbox') return;
+      console.log(e.target);
+    });
+  });
+};
+
+const renderComplete = function (item) {
+  // console.log(item.id);
+};
+
 const clearInput = function (inputValue) {
   inputValue.value = '';
 };
