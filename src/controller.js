@@ -1,11 +1,11 @@
 import * as model from './model.js';
-import renderTodo from './view.js';
+import * as view from './view.js';
 
-const controlAddToDo = function () {
-  model.addTodo(todo);
+const controlAddToDo = function (inputToDo) {
+  model.addToDo(inputToDo);
 };
 
 const init = function () {
-  //code here
+  view.addHandlerToDo(controlAddToDo);
 };
 init();
