@@ -1,16 +1,20 @@
-export const state = [];
-
+const state = [];
+export const todos = [...state];
 export const createToDoItem = function (data) {
   const newToDo = {
     todo: data,
     id: createUUID(),
     completed: false,
   };
-  state.push(newToDo);
+
+  todos.push(newToDo);
+  return todos;
 };
 
-const completeTodo = function (todo) {
-  //code here
+export const completeTodo = function (todo) {
+  const item = todos.find(item => item.id === todo.id);
+  item.completed = !item.completed;
+  console.log(todos);
 };
 
 const createUUID = function () {

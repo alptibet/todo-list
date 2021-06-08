@@ -3,12 +3,11 @@ import * as view from './view.js';
 
 const controlAddToDo = function (inputToDo) {
   model.createToDoItem(inputToDo);
-  view.renderToDo(model.state);
-  // view.addHandlerCompleteToDo(controlCompleteToDo);
+  view.renderToDo(model.todos);
 };
 
-const controlCompleteToDo = function () {
-  // view.addHandlerCompleteToDo(model.state);
+const controlCompleteToDo = function (todo) {
+  model.completeTodo(todo);
 };
 
 const init = function () {

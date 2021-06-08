@@ -21,33 +21,33 @@ export const addHandlerToDo = function (handler) {
   });
 };
 
-export const renderToDo = function (state) {
-  const lastItem = state[state.length - 1];
+export const renderToDo = function (todos) {
+  const lastItem = todos[todos.length - 1];
   const markup = generateMarkup(lastItem);
   const todoList = document.querySelector('.todos');
   todoList.insertAdjacentHTML('beforeend', markup);
 };
 
-export const addHandlerCompleteToDo = function () {
-  // const parentElement = document.querySelectorAll('.todos__item-form');
-  // parentElement.forEach(item => {
-  //   item.addEventListener('click', function (e) {
-  //     if (e.target.className !== 'todos__item-checkbox') return;
-  //     console.log(e.target);
-  //   });
-  // });
-
+export const addHandlerCompleteToDo = function (handler) {
   const list = document.querySelectorAll('.todos');
-  console.log(list);
   list.forEach(element => {
     element.addEventListener('click', function (e) {
-      console.log(e.target);
+      if (e.target.className !== 'todos__item-checkbox') return;
+      renderComplete(e.target);
+      handler(e.target);
     });
   });
 };
 
 const renderComplete = function (item) {
-  // console.log(item.id);
+  const form = item.closest(' form ');
+  const parag = form.querySelector('p');
+  if (item.checked) {
+    parag.style.textDecoration = 'line-through';
+    parag.style.textDecorationThickness = '2px';
+  } else {
+    parag.style.textDecoration = 'none';
+  }
 };
 
 const clearInput = function (inputValue) {
