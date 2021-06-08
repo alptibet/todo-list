@@ -1,16 +1,12 @@
 export const state = [];
 
-const createToDoItem = function (data) {
-  return {
+export const createToDoItem = function (data) {
+  const newToDo = {
     todo: data,
     id: createUUID(),
     completed: false,
   };
-};
-
-export const addToDo = function (todo) {
-  state.push(createToDoItem(todo));
-  console.log(state);
+  state.push(newToDo);
 };
 
 const deleteToDo = function (todo) {

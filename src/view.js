@@ -1,13 +1,13 @@
-const generateMarkup = function () {
-  const markup = `<div class="todos__item">
+const generateMarkup = function (item) {
+  const markup = `
+  <div class="todos__item">
     <form class="todos__item-form" action="#">
-      <input class="todos__item-checkbox" type="checkbox" name="todo-checkbox" id="todo-checkbox" />
-      <label for="todo-checkbox"></label>
-      <p class="todo">Example todo</p>
+      <input class="todos__item-checkbox" type="checkbox" name="todo-checkbox" id="${item.id}" />
+      <label for="${item.id}"></label>
+      <p class="todo">${item.todo}</p>
     </form>
   </div>
     `;
-
   return markup;
 };
 
@@ -21,8 +21,11 @@ export const addHandlerToDo = function (handler) {
   });
 };
 
-const renderToDo = function () {
-  //code here
+export const renderToDo = function (state) {
+  const lastItem = state[state.length - 1];
+  const markup = generateMarkup(lastItem);
+  const todoList = document.querySelector('.todos');
+  todoList.insertAdjacentHTML('beforeend', markup);
 };
 
 const clearInput = function (inputValue) {
