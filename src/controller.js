@@ -13,6 +13,6 @@ const controlCompleteToDo = function () {
 
 const init = function () {
   view.addHandlerToDo(controlAddToDo);
-  // view.addHandlerCompleteToDo(controlCompleteToDo);
+  view.addHandlerCompleteToDo(controlCompleteToDo);
 };
 init();

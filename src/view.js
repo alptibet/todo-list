@@ -29,10 +29,18 @@ export const renderToDo = function (state) {
 };
 
 export const addHandlerCompleteToDo = function () {
-  const parentElement = document.querySelectorAll('.todos__item-form');
-  parentElement.forEach(item => {
-    item.addEventListener('click', function (e) {
-      if (e.target.className !== 'todos__item-checkbox') return;
+  // const parentElement = document.querySelectorAll('.todos__item-form');
+  // parentElement.forEach(item => {
+  //   item.addEventListener('click', function (e) {
+  //     if (e.target.className !== 'todos__item-checkbox') return;
+  //     console.log(e.target);
+  //   });
+  // });
+
+  const list = document.querySelectorAll('.todos');
+  console.log(list);
+  list.forEach(element => {
+    element.addEventListener('click', function (e) {
       console.log(e.target);
     });
   });
