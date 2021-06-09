@@ -15,20 +15,19 @@ const controlCompleteToDo = function (todo) {
 };
 
 const controlShowCompleted = function () {
-  view.renderCompletedItems(model.todos);
+  view.renderCompletedItems();
 };
 
 const controlShowNotCompleted = function () {
-  view.renderNotCompletedItems(model.todos);
+  view.renderNotCompletedItems();
 };
 
 const controlShowAll = function () {
-  view.renderAllItems(model.todos);
+  view.renderAllItems();
 };
 
 const controlClearCompleted = function () {
-  const clearItems = model.clearCompleted();
-  view.renderClear(clearItems);
+  view.renderClear();
 };
 
 const init = function () {

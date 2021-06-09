@@ -63,6 +63,8 @@ export const renderRemaining = function (items) {
 
 //FILTERS//
 const parentElement = document.querySelector('.todo-info');
+const todos = document.querySelector('.todos');
+
 export const addHandlerShowCompleted = function (handler) {
   parentElement.addEventListener('click', function (e) {
     if (e.target.className !== 'completed') return;
@@ -93,38 +95,40 @@ export const addHandlerClearCompleted = function (handler) {
 
 export const renderCompletedItems = function (items) {
   renderAllItems(items);
-  const notCompleteTodos = items.filter(item => item.completed !== true);
-  const elements = notCompleteTodos.forEach(function (item) {
-    const element = document.querySelector('#' + CSS.escape(item.id));
-    const items = element.closest('.todos__item');
-    items.style.display = 'none';
+  const boxes = todos.querySelectorAll('input');
+  boxes.forEach(function (box) {
+    if (!box.checked) {
+      const el = box.closest('.todos__item');
+      el.style.display = 'none';
+    }
   });
 };
 
 export const renderNotCompletedItems = function (items) {
   renderAllItems(items);
-  const completeTodos = items.filter(item => item.completed === true);
-  const elements = completeTodos.forEach(function (item) {
-    const element = document.querySelector('#' + CSS.escape(item.id));
-    const items = element.closest('.todos__item');
-    items.style.display = 'none';
+  const boxes = todos.querySelectorAll('input');
+  boxes.forEach(function (box) {
+    if (box.checked) {
+      const el = box.closest('.todos__item');
+      el.style.display = 'none';
+    }
   });
 };
 
 export const renderAllItems = function (items) {
-  const elements = items.forEach(function (item) {
-    const element = document.querySelector('#' + CSS.escape(item.id));
-    const items = element.closest('.todos__item');
-    items.style.display = 'block';
+  const boxes = todos.querySelectorAll('input');
+  boxes.forEach(function (box) {
+    const el = box.closest('.todos__item');
+    el.style.display = 'block';
   });
 };
 
-export const renderClear = function (items) {
-  const todos = document.querySelector('.todos');
-  console.log(items);
-  const elements = items.forEach(function (item) {
-    const element = document.querySelector('#divid' + CSS.escape(item.id));
-    console.log(element);
-    todos.removeChild(element);
+export const renderClear = function () {
+  const boxes = todos.querySelectorAll('input');
+  boxes.forEach(function (box) {
+    if (box.checked) {
+      const el = box.closest('.todos__item');
+      todos.removeChild(el);
+    }
   });
 };
