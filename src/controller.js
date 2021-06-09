@@ -4,13 +4,14 @@ import * as view from './view.js';
 const controlAddToDo = function (inputToDo) {
   model.createToDoItem(inputToDo);
   model.calculateRemaining();
-  view.renderToDo(model.todos);
+  view.renderToDo(model.todos[model.todos.length - 1]);
   view.renderRemaining(model.remaining);
 };
 
 const controlCompleteToDo = function (todo) {
   model.completeTodo(todo);
   model.calculateRemaining();
+  view.renderComplete(todo);
   view.renderRemaining(model.remaining);
 };
 

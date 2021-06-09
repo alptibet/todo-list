@@ -25,10 +25,8 @@ const clearInput = function (inputValue) {
   inputValue.value = '';
 };
 
-export const renderToDo = function (todos) {
-  const copyTodos = [...todos];
-  const lastItem = copyTodos[copyTodos.length - 1];
-  const markup = generateMarkup(lastItem);
+export const renderToDo = function (todo) {
+  const markup = generateMarkup(todo);
   const todoList = document.querySelector('.todos');
   todoList.insertAdjacentHTML('beforeend', markup);
 };
@@ -38,13 +36,12 @@ export const addHandlerCompleteToDo = function (handler) {
   list.forEach(element => {
     element.addEventListener('click', function (e) {
       if (e.target.className !== 'todos__item-checkbox') return;
-      renderComplete(e.target);
       handler(e.target);
     });
   });
 };
 
-const renderComplete = function (item) {
+export const renderComplete = function (item) {
   const form = item.closest(' form ');
   const parag = form.querySelector('p');
   if (item.checked) {
