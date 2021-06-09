@@ -22,7 +22,8 @@ export const addHandlerToDo = function (handler) {
 };
 
 export const renderToDo = function (todos) {
-  const lastItem = todos[todos.length - 1];
+  const copyTodos = [...todos];
+  const lastItem = copyTodos[copyTodos.length - 1];
   const markup = generateMarkup(lastItem);
   const todoList = document.querySelector('.todos');
   todoList.insertAdjacentHTML('beforeend', markup);
@@ -48,6 +49,12 @@ const renderComplete = function (item) {
   } else {
     parag.style.textDecoration = 'none';
   }
+};
+
+export const renderRemaining = function (items) {
+  const element = document.querySelector('.items-left > p');
+  if (items > 0) element.textContent = `${items} items left`;
+  if (items === 0) element.textContent = 'No items left';
 };
 
 const clearInput = function (inputValue) {

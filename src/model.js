@@ -1,20 +1,24 @@
-const state = [];
-export const todos = [...state];
+export const todos = [];
+export let remaining = 0;
 export const createToDoItem = function (data) {
+  const todosCopy = [...todos];
   const newToDo = {
     todo: data,
     id: createUUID(),
     completed: false,
   };
 
-  todos.push(newToDo);
-  return todos;
+  todos.push(newToDo); //cannot figure out how to update state without modifying it
 };
 
 export const completeTodo = function (todo) {
   const item = todos.find(item => item.id === todo.id);
   item.completed = !item.completed;
-  console.log(todos);
+};
+
+export const calculateRemaining = function () {
+  const remainingItems = todos.filter(item => item.completed === true);
+  remaining = todos.length - remainingItems.length;
 };
 
 const createUUID = function () {
