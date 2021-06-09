@@ -1,6 +1,6 @@
 const generateMarkup = function (item) {
   const markup = `
-  <div class="todos__item">
+  <div class="todos__item" id=divid${item.id}>
     <form class="todos__item-form" action="#">
       <input class="todos__item-checkbox" type="checkbox" name="todo-checkbox" id="${item.id}" />
       <label for="${item.id}"></label>
@@ -62,9 +62,8 @@ export const renderRemaining = function (items) {
 };
 
 //FILTERS//
-
+const parentElement = document.querySelector('.todo-info');
 export const addHandlerShowCompleted = function (handler) {
-  const parentElement = document.querySelector('.items-status');
   parentElement.addEventListener('click', function (e) {
     if (e.target.className !== 'completed') return;
     handler();
@@ -72,7 +71,6 @@ export const addHandlerShowCompleted = function (handler) {
 };
 
 export const addHandlerShowNotCompleted = function (handler) {
-  const parentElement = document.querySelector('.items-status');
   parentElement.addEventListener('click', function (e) {
     if (e.target.className !== 'active') return;
     handler();
@@ -80,7 +78,6 @@ export const addHandlerShowNotCompleted = function (handler) {
 };
 
 export const addHandlerShowAll = function (handler) {
-  const parentElement = document.querySelector('.items-status');
   parentElement.addEventListener('click', function (e) {
     if (e.target.className !== 'all') return;
     handler();
@@ -88,7 +85,6 @@ export const addHandlerShowAll = function (handler) {
 };
 
 export const addHandlerClearCompleted = function (handler) {
-  const parentElement = document.querySelector('.items-clear');
   parentElement.addEventListener('click', function (e) {
     if (e.target.className !== 'clear') return;
     handler();
@@ -124,11 +120,11 @@ export const renderAllItems = function (items) {
 };
 
 export const renderClear = function (items) {
+  console.log(items);
   const parentElement = document.querySelector('.todos');
   const elements = items.forEach(function (item) {
-    const element = document.querySelector('#' + CSS.escape(item.id));
+    const element = document.querySelector('#divid' + CSS.escape(item.id));
     console.log(element);
-    const itemToDelete = element.closest('.todos__item');
-    parentElement.removeChild(itemToDelete);
+    parentElement.removeChild(element);
   });
 };

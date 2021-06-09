@@ -32,6 +32,6 @@ export const calculateRemaining = function () {
 
 export const clearCompleted = function () {
   const copyTodos = [...todos];
-  const itemsToClear = copyTodos.filter(item => item.completed === true);
-  return itemsToClear;
+  const toClear = copyTodos.filter(item => item.completed === true);
+  return toClear;
 };
