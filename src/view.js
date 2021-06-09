@@ -120,11 +120,11 @@ export const renderAllItems = function (items) {
 };
 
 export const renderClear = function (items) {
+  const todos = document.querySelector('.todos');
   console.log(items);
-  const parentElement = document.querySelector('.todos');
   const elements = items.forEach(function (item) {
     const element = document.querySelector('#divid' + CSS.escape(item.id));
     console.log(element);
-    parentElement.removeChild(element);
+    todos.removeChild(element);
   });
 };
