@@ -21,6 +21,10 @@ export const addHandlerToDo = function (handler) {
   });
 };
 
+const clearInput = function (inputValue) {
+  inputValue.value = '';
+};
+
 export const renderToDo = function (todos) {
   const copyTodos = [...todos];
   const lastItem = copyTodos[copyTodos.length - 1];
@@ -57,6 +61,74 @@ export const renderRemaining = function (items) {
   if (items === 0) element.textContent = 'No items left';
 };
 
-const clearInput = function (inputValue) {
-  inputValue.value = '';
+//FILTERS//
+
+export const addHandlerShowCompleted = function (handler) {
+  const parentElement = document.querySelector('.items-status');
+  parentElement.addEventListener('click', function (e) {
+    if (e.target.className !== 'completed') return;
+    handler();
+  });
+};
+
+export const addHandlerShowNotCompleted = function (handler) {
+  const parentElement = document.querySelector('.items-status');
+  parentElement.addEventListener('click', function (e) {
+    if (e.target.className !== 'active') return;
+    handler();
+  });
+};
+
+export const addHandlerShowAll = function (handler) {
+  const parentElement = document.querySelector('.items-status');
+  parentElement.addEventListener('click', function (e) {
+    if (e.target.className !== 'all') return;
+    handler();
+  });
+};
+
+export const addHandlerClearCompleted = function (handler) {
+  const parentElement = document.querySelector('.items-clear');
+  parentElement.addEventListener('click', function (e) {
+    if (e.target.className !== 'clear') return;
+    handler();
+  });
+};
+
+export const renderCompletedItems = function (items) {
+  renderAllItems(items);
+  const notCompleteTodos = items.filter(item => item.completed !== true);
+  const elements = notCompleteTodos.forEach(function (item) {
+    const element = document.querySelector('#' + CSS.escape(item.id));
+    const items = element.closest('.todos__item');
+    items.style.display = 'none';
+  });
+};
+
+export const renderNotCompletedItems = function (items) {
+  renderAllItems(items);
+  const completeTodos = items.filter(item => item.completed === true);
+  const elements = completeTodos.forEach(function (item) {
+    const element = document.querySelector('#' + CSS.escape(item.id));
+    const items = element.closest('.todos__item');
+    items.style.display = 'none';
+  });
+};
+
+export const renderAllItems = function (items) {
+  const elements = items.forEach(function (item) {
+    const element = document.querySelector('#' + CSS.escape(item.id));
+    const items = element.closest('.todos__item');
+    items.style.display = 'block';
+  });
+};
+
+export const renderClear = function (items) {
+  const parentElement = document.querySelector('.todos');
+  const elements = items.forEach(function (item) {
+    const element = document.querySelector('#' + CSS.escape(item.id));
+    console.log(element);
+    const itemToDelete = element.closest('.todos__item');
+    parentElement.removeChild(itemToDelete);
+  });
 };
