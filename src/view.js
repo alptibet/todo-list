@@ -48,8 +48,11 @@ export const renderComplete = function (item) {
   if (item.checked) {
     parag.style.textDecoration = 'line-through';
     parag.style.textDecorationThickness = '2px';
+    parag.style.textDecorationColor = 'hsl(236, 9%, 61%)';
+    parag.style.color = 'hsl(236, 9%, 61%)';
   } else {
     parag.style.textDecoration = 'none';
+    parag.style.color = 'hsl(235, 19%, 35 %)';
   }
 };
 
@@ -159,3 +162,20 @@ const handleDrop = function (e) {
   }
   return false;
 };
+
+//DARK MODE PREFERENCE
+let overrideDarkTheme = false;
+const preferDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+const themeSelectorIcon = document.querySelector('.header__icon');
+themeSelectorIcon.addEventListener('click', function (e) {
+  e.preventDefault();
+  overrideDarkTheme = !overrideDarkTheme;
+  const icon = themeSelectorIcon.querySelector('img');
+  if (overrideDarkTheme) icon.src = '/assets/icon-sun.svg';
+  if (!overrideDarkTheme) icon.src = '/assets/icon-moon.svg';
+  console.log(overrideDarkTheme);
+});
+
+if (overrideDarkTheme && preferDarkScheme) {
+  //code
+}
