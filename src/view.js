@@ -1,6 +1,6 @@
 const generateMarkup = function (item) {
   const markup = `
-  <div class="todos__item" id=divid${item.id}>
+  <div class="todos__item"  draggable='true'>
     <form class="todos__item-form" action="#">
       <input class="todos__item-checkbox" type="checkbox" name="todo-checkbox" id="${item.id}" />
       <label for="${item.id}"></label>
@@ -29,6 +29,7 @@ export const renderToDo = function (todo) {
   const markup = generateMarkup(todo);
   const todoList = document.querySelector('.todos');
   todoList.insertAdjacentHTML('beforeend', markup);
+  addHandlerDragDrop();
 };
 
 export const addHandlerCompleteToDo = function (handler) {
@@ -128,4 +129,35 @@ export const renderClear = function () {
       todos.removeChild(el);
     }
   });
+};
+
+//DRAG AND DROP
+let sourceElement = null;
+const addHandlerDragDrop = function () {
+  console.log('dragdrop');
+  const items = document.querySelectorAll('.todos__item');
+  console.log(items);
+  items.forEach(item => item.addEventListener('dragstart', handleDragStart));
+  items.forEach(item => item.addEventListener('drop', handleDrop));
+  items.forEach(item => item.addEventListener('dragover', handleDragOver));
+};
+
+const handleDragStart = function (e) {
+  sourceElement = this;
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text/html', this.innerHTML);
+};
+
+const handleDragOver = function (e) {
+  e.preventDefault();
+  return false;
+};
+
+const handleDrop = function (e) {
+  e.stopPropagation();
+  if (sourceElement !== this) {
+    sourceElement.innerHTML = this.innerHTML;
+    this.innerHTML = e.dataTransfer.getData('text/html');
+  }
+  return false;
 };
