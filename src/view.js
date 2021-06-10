@@ -176,6 +176,11 @@ themeSelectorIcon.addEventListener('click', function (e) {
   console.log(overrideDarkTheme);
 });
 
-if (overrideDarkTheme && preferDarkScheme) {
-  //code
-}
+export const addHandlerDarkMode = function () {
+  console.log(preferDarkScheme.matches);
+  if (preferDarkScheme.matches) {
+    const body = document.querySelector('body');
+    console.log(body);
+    body.style.backgroundColor = 'black';
+  }
+};
