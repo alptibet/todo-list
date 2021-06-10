@@ -134,9 +134,7 @@ export const renderClear = function () {
 //DRAG AND DROP
 let sourceElement = null;
 const addHandlerDragDrop = function () {
-  console.log('dragdrop');
   const items = document.querySelectorAll('.todos__item');
-  console.log(items);
   items.forEach(item => item.addEventListener('dragstart', handleDragStart));
   items.forEach(item => item.addEventListener('drop', handleDrop));
   items.forEach(item => item.addEventListener('dragover', handleDragOver));
