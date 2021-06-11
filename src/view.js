@@ -50,25 +50,10 @@ export const addHandlerCompleteToDo = function (handler) {
   const list = document.querySelectorAll('.todos');
   list.forEach(element => {
     element.addEventListener('click', function (e) {
-      if (e.target.className !== 'todos__item-checkbox') return;
+      if (!e.target.className.includes('todos__item-checkbox')) return;
       handler(e.target);
     });
   });
-};
-
-export const renderComplete = function (item) {
-  const form = item.closest(' form ');
-  const parag = form.querySelector('p');
-  if (item.checked) {
-    parag.style.textDecoration = 'line-through';
-    parag.style.textDecorationThickness = '2px';
-    parag.style.textDecorationColor = 'hsl(236, 9%, 61%)';
-    parag.style.color = 'hsl(236, 9%, 61%)';
-  }
-  if (!item.checked) {
-    parag.style.textDecoration = 'none';
-    parag.style.color = 'hsl(235, 19%, 35%)';
-  }
 };
 
 export const renderRemaining = function (items) {
@@ -185,7 +170,6 @@ let prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)').matche
 const themeSelectorIcon = document.querySelector('.header__icon img');
 const body = document.querySelector('body');
 const header = document.querySelector('.header');
-const inputTodo = document.querySelector('.header__input');
 const textBox = document.querySelector('.todo__textbox');
 const inputLabel = document.querySelector('.label');
 
@@ -195,7 +179,7 @@ export const addHandlerAutoSelectTheme = function () {
 };
 
 export const addHandlerToggleTheme = function () {
-  themeSelectorIcon.addEventListener('click', e => {
+  themeSelectorIcon.addEventListener('click', () => {
     prefersDarkScheme = !prefersDarkScheme;
     if (prefersDarkScheme) renderDarkMode();
     if (!prefersDarkScheme) renderLightMode();
@@ -205,11 +189,9 @@ export const addHandlerToggleTheme = function () {
 const renderLightMode = function () {
   themeSelectorIcon.src = '/assets/icon-moon.svg';
   body.classList.remove('dark');
-  header.classList.remove('dark');
-  inputTodo.classList.remove('dark');
-  textBox.classList.remove('dark');
-  inputLabel.classList.remove('dark');
-  const todoItems = document.querySelectorAll('.todos__item');
+  const headerItems = header.querySelectorAll('*');
+  headerItems.forEach(item => item.classList.remove('dark'));
+  const todoItems = todos.querySelectorAll('*');
   if (todoItems.length === 0) return;
   todoItems.forEach(item => item.classList.remove('dark'));
 };
@@ -217,11 +199,9 @@ const renderLightMode = function () {
 const renderDarkMode = function () {
   themeSelectorIcon.src = '/assets/icon-sun.svg';
   body.classList.add('dark');
-  header.classList.add('dark');
-  inputTodo.classList.add('dark');
-  textBox.classList.add('dark');
-  inputLabel.classList.add('dark');
-  const todoItems = document.querySelectorAll('.todos__item');
+  const headerItems = header.querySelectorAll('*');
+  headerItems.forEach(item => item.classList.add('dark'));
+  const todoItems = todos.querySelectorAll('*');
   if (todoItems.length === 0) return;
   todoItems.forEach(item => item.classList.add('dark'));
 };

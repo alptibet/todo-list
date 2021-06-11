@@ -11,7 +11,6 @@ const controlAddToDo = function (inputToDo) {
 const controlCompleteToDo = function (todo) {
   model.completeTodo(todo);
   model.calculateRemaining();
-  view.renderComplete(todo);
   view.renderRemaining(model.remaining);
 };
 

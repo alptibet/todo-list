@@ -83,7 +83,7 @@ body.dark {
 }
 .header__input-todo label.dark {
   background-color: #25273c;
-  border: 1px solid #393a4c;
+  border: 1px solid #484b6a;
 }
 .header__input .todo__checkbox {
   width: 2rem;
@@ -97,7 +97,7 @@ body.dark {
   font-family: "Josefin Sans", sans-serif;
   font-weight: 400;
   font-size: 1.8rem;
-  color: #393a4c;
+  color: #484b6a;
   border: none;
   width: 100%;
   padding: 1rem;
@@ -108,11 +108,11 @@ body.dark {
   color: #cacde8;
 }
 .header__input .todo__textbox::placeholder {
-  color: #777a92;
+  color: #9394a5;
 }
 .header__input .todo__textbox:focus {
   outline-width: 0;
-  caret-color: #393a4c;
+  caret-color: #484b6a;
 }
 
 body {
@@ -148,8 +148,11 @@ body {
 .todos__item-form p {
   font-size: 1.8rem;
   padding: 1rem 2rem;
-  color: #393a4c;
+  color: #484b6a;
   cursor: pointer;
+}
+.todos__item-form p.dark {
+  color: #cacde8;
 }
 .todos__item-form label {
   background-color: #fff;
@@ -180,6 +183,12 @@ body {
 .todos__item-form input[type=checkbox]:checked + label::after {
   opacity: 1;
 }
+.todos__item-form input[type=checkbox]:checked ~ p {
+  color: #9394a5;
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: #9394a5;
+}
 .todos__item-checkbox {
   width: 2rem;
   height: 2rem;
@@ -189,7 +198,7 @@ body {
   font-family: "Josefin Sans", sans-serif;
   font-weight: 400;
   font-size: 1.8rem;
-  color: #393a4c;
+  color: #484b6a;
   border: none;
   width: 100%;
   padding: 1rem;
@@ -197,7 +206,7 @@ body {
   cursor: pointer;
 }
 .todos__item-textbox::placeholder {
-  color: #777a92;
+  color: #9394a5;
 }
 
 .todo-info {
@@ -217,7 +226,7 @@ body {
   border-bottom-left-radius: 6px;
 }
 .todo-info .items-left {
-  color: #777a92;
+  color: #9394a5;
   font-size: 1.2rem;
 }
 .todo-info .items-status {
@@ -227,10 +236,10 @@ body {
   color: #3a7bfd;
 }
 .todo-info .items-status :first-child + p {
-  color: #393a4c;
+  color: #484b6a;
 }
 .todo-info .items-status :last-child {
-  color: #777a92;
+  color: #9394a5;
 }
 .todo-info .items-status p {
   cursor: pointer;
@@ -241,5 +250,5 @@ body {
 }
 .todo-info .items-clear {
   cursor: pointer;
-  color: #393a4c;
+  color: #484b6a;
 }

@@ -31,6 +31,10 @@
         padding: 1rem 2rem;
         color: $color-very-dark-grayish-blue;
         cursor: pointer;
+
+        &.dark {
+          color: $color-light-grayish-blue-dark;
+        }
       }
 
       label {
@@ -65,6 +69,13 @@
 
       input[type='checkbox']:checked + label::after {
         opacity: 1;
+      }
+
+      input[type='checkbox']:checked ~ p {
+        color: $color-dark-grayish-blue;
+        text-decoration: line-through;
+        text-decoration-thickness: 2px;
+        text-decoration-color: $color-dark-grayish-blue;
       }
     }
 
