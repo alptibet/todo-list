@@ -4,7 +4,6 @@
   position: relative;
 
   & > :first-child {
-    border-top: 1px solid $color-white;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
   }
@@ -15,6 +14,11 @@
     background-color: $color-white;
     padding: 1.2rem 3rem;
     border-bottom: 1px solid $color-light-grayish-blue;
+
+    &.dark {
+      background-color: $color-very-dark-desaturated-blue;
+      border-bottom: 1px solid $color-light-grayish-blue-dark;
+    }
 
     &-form {
       display: flex;

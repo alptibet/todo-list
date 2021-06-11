@@ -166,6 +166,12 @@ const handleDrop = function (e) {
 //DARK MODE PREFERENCE
 let prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
 const themeSelectorIcon = document.querySelector('.header__icon img');
+//ITEMS
+const body = document.querySelector('body');
+const header = document.querySelector('.header');
+const inputTodo = document.querySelector('.header__input');
+const textBox = document.querySelector('.todo__textbox');
+const inputLabel = document.querySelector('.label');
 
 export const addHandlerAutoSelectTheme = function () {
   if (prefersDarkScheme) renderDarkMode();
@@ -174,7 +180,6 @@ export const addHandlerAutoSelectTheme = function () {
 
 export const addHandlerToggleTheme = function () {
   themeSelectorIcon.addEventListener('click', e => {
-    console.log(e.target);
     prefersDarkScheme = !prefersDarkScheme;
     if (prefersDarkScheme) renderDarkMode();
     if (!prefersDarkScheme) renderLightMode();
@@ -182,11 +187,25 @@ export const addHandlerToggleTheme = function () {
 };
 
 const renderLightMode = function () {
-  console.log('rendering light mode');
+  themeSelectorIcon.src = '/assets/icon-moon.svg';
+  body.classList.remove('dark');
+  header.classList.remove('dark');
+  inputTodo.classList.remove('dark');
+  textBox.classList.remove('dark');
+  inputLabel.classList.remove('dark');
+  const todoItems = document.querySelectorAll('.todos__item');
+  todoItems.forEach(item => item.classList.remove('dark'));
 };
 
 const renderDarkMode = function () {
-  console.log('rendering dark mode');
+  themeSelectorIcon.src = '/assets/icon-sun.svg';
+  body.classList.add('dark');
+  header.classList.add('dark');
+  inputTodo.classList.add('dark');
+  textBox.classList.add('dark');
+  inputLabel.classList.add('dark');
+  const todoItems = document.querySelectorAll('.todos__item');
+  todoItems.forEach(item => item.classList.add('dark'));
 };
 
 /*
