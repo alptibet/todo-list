@@ -38,7 +38,8 @@ const init = function () {
   view.addHandlerShowNotCompleted(controlShowNotCompleted);
   view.addHandlerShowAll(controlShowAll);
   view.addHandlerClearCompleted(controlClearCompleted);
-  view.addHandlerDarkMode();
+  view.addHandlerAutoSelectTheme();
+  view.addHandlerToggleTheme();
 };
 
 init();

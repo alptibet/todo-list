@@ -50,9 +50,10 @@ export const renderComplete = function (item) {
     parag.style.textDecorationThickness = '2px';
     parag.style.textDecorationColor = 'hsl(236, 9%, 61%)';
     parag.style.color = 'hsl(236, 9%, 61%)';
-  } else {
+  }
+  if (!item.checked) {
     parag.style.textDecoration = 'none';
-    parag.style.color = 'hsl(235, 19%, 35 %)';
+    parag.style.color = 'hsl(235, 19%, 35%)';
   }
 };
 
@@ -162,25 +163,39 @@ const handleDrop = function (e) {
   }
   return false;
 };
-
 //DARK MODE PREFERENCE
-let overrideDarkTheme = false;
-const preferDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-const themeSelectorIcon = document.querySelector('.header__icon');
-themeSelectorIcon.addEventListener('click', function (e) {
-  e.preventDefault();
-  overrideDarkTheme = !overrideDarkTheme;
-  const icon = themeSelectorIcon.querySelector('img');
-  if (overrideDarkTheme) icon.src = '/assets/icon-sun.svg';
-  if (!overrideDarkTheme) icon.src = '/assets/icon-moon.svg';
-  console.log(overrideDarkTheme);
-});
+let prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const themeSelectorIcon = document.querySelector('.header__icon img');
 
-export const addHandlerDarkMode = function () {
-  console.log(preferDarkScheme.matches);
-  if (preferDarkScheme.matches) {
-    const body = document.querySelector('body');
-    console.log(body);
-    body.style.backgroundColor = 'black';
-  }
+export const addHandlerAutoSelectTheme = function () {
+  if (prefersDarkScheme) renderDarkMode();
+  if (!prefersDarkScheme) renderLightMode();
 };
+
+export const addHandlerToggleTheme = function () {
+  themeSelectorIcon.addEventListener('click', e => {
+    console.log(e.target);
+    prefersDarkScheme = !prefersDarkScheme;
+    if (prefersDarkScheme) renderDarkMode();
+    if (!prefersDarkScheme) renderLightMode();
+  });
+};
+
+const renderLightMode = function () {
+  console.log('rendering light mode');
+};
+
+const renderDarkMode = function () {
+  console.log('rendering dark mode');
+};
+
+/*
+Items to change color in dark mode
+-header background img
+-body background color
+-input background color
+-input font color
+-todos background color
+-todos font color
+-todos completed font color
+*/
