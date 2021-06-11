@@ -1,5 +1,17 @@
 const generateMarkup = function (item) {
-  const markup = `
+  let markup = '';
+  if (prefersDarkScheme) {
+    markup = `
+    <div class="todos__item dark"  draggable='true'>
+      <form class="todos__item-form dark" action="#">
+        <input class="todos__item-checkbox dark" type="checkbox" name="todo-checkbox" id="${item.id}" />
+        <label for="${item.id}" class="dark"></label>
+        <p class="todo dark">${item.todo}</p>
+      </form>
+    </div>
+      `;
+  } else {
+    markup = `
   <div class="todos__item"  draggable='true'>
     <form class="todos__item-form" action="#">
       <input class="todos__item-checkbox" type="checkbox" name="todo-checkbox" id="${item.id}" />
@@ -8,6 +20,8 @@ const generateMarkup = function (item) {
     </form>
   </div>
     `;
+  }
+
   return markup;
 };
 
@@ -15,9 +29,9 @@ export const addHandlerToDo = function (handler) {
   const parentElement = document.querySelector('.header__input-todo');
   parentElement.addEventListener('submit', function (e) {
     e.preventDefault();
-    const inputValue = this.parentElement.querySelector('.todo__textbox');
-    handler(inputValue.value);
-    clearInput(inputValue);
+    const inputElement = this.parentElement.querySelector('.todo__textbox');
+    handler(inputElement.value);
+    clearInput(inputElement);
   });
 };
 
@@ -163,10 +177,12 @@ const handleDrop = function (e) {
   }
   return false;
 };
+
 //DARK MODE PREFERENCE
 let prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
-const themeSelectorIcon = document.querySelector('.header__icon img');
+
 //ITEMS
+const themeSelectorIcon = document.querySelector('.header__icon img');
 const body = document.querySelector('body');
 const header = document.querySelector('.header');
 const inputTodo = document.querySelector('.header__input');
@@ -194,6 +210,7 @@ const renderLightMode = function () {
   textBox.classList.remove('dark');
   inputLabel.classList.remove('dark');
   const todoItems = document.querySelectorAll('.todos__item');
+  if (todoItems.length === 0) return;
   todoItems.forEach(item => item.classList.remove('dark'));
 };
 
@@ -205,6 +222,7 @@ const renderDarkMode = function () {
   textBox.classList.add('dark');
   inputLabel.classList.add('dark');
   const todoItems = document.querySelectorAll('.todos__item');
+  if (todoItems.length === 0) return;
   todoItems.forEach(item => item.classList.add('dark'));
 };
 
