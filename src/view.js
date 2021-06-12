@@ -208,14 +208,3 @@ const renderDarkMode = function () {
   todoItems.forEach(item => item.classList.add('dark'));
   todoInfo.classList.add('dark');
 };
-
-/*
-Items to change color in dark mode
--header background img
--body background color
--input background color
--input font color
--todos background color
--todos font color
--todos completed font color
-*/
