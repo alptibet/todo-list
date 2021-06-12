@@ -7,6 +7,7 @@ const generateMarkup = function (item) {
         <input class="todos__item-checkbox dark" type="checkbox" name="todo-checkbox" id="${item.id}" />
         <label for="${item.id}" class="dark"></label>
         <p class="todo dark">${item.todo}</p>
+        <img class="todos__item-cross" src="/assets//icon-cross.svg" 
       </form>
     </div>
       `;
@@ -17,6 +18,7 @@ const generateMarkup = function (item) {
       <input class="todos__item-checkbox" type="checkbox" name="todo-checkbox" id="${item.id}" />
       <label for="${item.id}"></label>
       <p class="todo">${item.todo}</p>
+      <img class="todos__item-cross" src="/assets//icon-cross.svg" 
     </form>
   </div>
     `;

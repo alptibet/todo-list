@@ -175,6 +175,10 @@ body {
   justify-content: flex-start;
   position: relative;
 }
+.todos__item-form img {
+  display: inline-block;
+  margin-left: auto;
+}
 .todos__item-form p {
   font-size: 1.8rem;
   padding: 1rem 2rem;
