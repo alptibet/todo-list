@@ -63,10 +63,11 @@ export const renderRemaining = function (items) {
 };
 
 //FILTERS//
-const parentElement = document.querySelector('.todo-info');
+
 const todos = document.querySelector('.todos');
 
 export const addHandlerShowCompleted = function (handler) {
+  const parentElement = document.querySelector('.todo-info');
   parentElement.addEventListener('click', function (e) {
     if (e.target.className !== 'completed') return;
     handler();
@@ -74,6 +75,7 @@ export const addHandlerShowCompleted = function (handler) {
 };
 
 export const addHandlerShowNotCompleted = function (handler) {
+  const parentElement = document.querySelector('.todo-info');
   parentElement.addEventListener('click', function (e) {
     if (e.target.className !== 'active') return;
     handler();
@@ -81,6 +83,7 @@ export const addHandlerShowNotCompleted = function (handler) {
 };
 
 export const addHandlerShowAll = function (handler) {
+  const parentElement = document.querySelector('.todo-info');
   parentElement.addEventListener('click', function (e) {
     if (e.target.className !== 'all') return;
     handler();
@@ -88,6 +91,7 @@ export const addHandlerShowAll = function (handler) {
 };
 
 export const addHandlerClearCompleted = function (handler) {
+  const parentElement = document.querySelector('.todo-info');
   parentElement.addEventListener('click', function (e) {
     if (e.target.className !== 'clear') return;
     handler();
@@ -191,7 +195,6 @@ const renderLightMode = function () {
   const headerItems = header.querySelectorAll('*');
   headerItems.forEach(item => item.classList.remove('dark'));
   const todoItems = todos.querySelectorAll('*');
-  if (todoItems.length === 0) return;
   todoItems.forEach(item => item.classList.remove('dark'));
   todoInfo.classList.remove('dark');
 };
@@ -202,7 +205,6 @@ const renderDarkMode = function () {
   const headerItems = header.querySelectorAll('*');
   headerItems.forEach(item => item.classList.add('dark'));
   const todoItems = todos.querySelectorAll('*');
-  if (todoItems.length === 0) return;
   todoItems.forEach(item => item.classList.add('dark'));
   todoInfo.classList.add('dark');
 };
