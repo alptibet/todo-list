@@ -1,6 +1,7 @@
 .todos {
   width: 100%;
   padding: 0rem 2rem;
+  margin-top: -5rem;
 
   & > :first-child {
     border-top-left-radius: 6px;
@@ -8,15 +9,20 @@
   }
 
   &__item {
-    width: 45%;
+    width: 60rem;
     margin: 0 auto;
     background-color: $color-white;
     padding: 1.2rem 3rem;
     border-bottom: 1px solid $color-light-grayish-blue;
 
+    @include respond(tab-port) {
+      // width < 768px
+      width: 90vw;
+    }
+
     &.dark {
       background-color: $color-very-dark-desaturated-blue;
-      border-bottom: 1px solid $color-light-grayish-blue-dark;
+      border-bottom: 1px solid $color-dark-grayish-blue-2;
     }
 
     &-form {
@@ -61,6 +67,10 @@
         top: 7px;
         left: 6px;
         opacity: 0;
+        @include respond(phone) {
+          left: 4px;
+          top: 5px;
+        }
       }
 
       input[type='checkbox'] {

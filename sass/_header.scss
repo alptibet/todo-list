@@ -10,12 +10,17 @@
   }
 
   &__content {
-    width: 45%;
+    width: 60rem;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 4rem;
+
+    @include respond(tab-port) {
+      // width < 768px
+      width: 90vw;
+    }
 
     h1 {
       font-size: 4.2rem;
@@ -28,11 +33,15 @@
   }
 
   &__input {
-    width: 45%;
+    width: 60rem;
     margin: 0 auto;
     background-color: $color-white;
     padding: 1.2rem 3rem;
     border-radius: 6px;
+
+    @include respond(tab-port) {
+      width: 90vw;
+    }
 
     &.dark {
       background-color: $color-very-dark-desaturated-blue;

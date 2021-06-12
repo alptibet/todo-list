@@ -4,7 +4,7 @@
 
   &__items {
     margin: 0 auto;
-    width: 45%;
+    width: 60rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -13,6 +13,15 @@
     font-size: 1.4rem;
     border-bottom-right-radius: 6px;
     border-bottom-left-radius: 6px;
+
+    @include respond(tab-port) {
+      width: 90vw;
+    }
+
+    @include respond(phone) {
+      width: 90vw;
+    }
+
     &.dark {
       background-color: $color-very-dark-desaturated-blue;
     }
@@ -20,11 +29,14 @@
 
   & .items-left {
     color: $color-dark-grayish-blue;
-    font-size: 1.2rem;
   }
 
   & .items-status {
     display: flex;
+
+    @include respond(phone) {
+      display: none;
+    }
 
     & :first-child {
       color: $color-bright-blue;
@@ -52,4 +64,54 @@
     cursor: pointer;
     color: $color-very-dark-grayish-blue;
   }
+}
+
+.hidden {
+  display: none;
+
+  @include respond(phone) {
+    margin: 0 auto;
+    margin-top: 3rem;
+    width: 90vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-white;
+    padding: 2rem 2rem;
+    font-size: 1.4rem;
+    border-radius: 6px;
+    display: flex;
+
+    & :first-child {
+      color: $color-bright-blue;
+    }
+
+    & :first-child + p {
+      color: $color-very-dark-grayish-blue;
+    }
+
+    & :last-child {
+      color: $color-dark-grayish-blue;
+    }
+
+    & p {
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    & :not(:last-child) {
+      margin-right: 2rem;
+    }
+
+    &.dark {
+      background-color: $color-very-dark-desaturated-blue;
+    }
+  }
+}
+
+.drag-info {
+  font-size: 1.6em;
+  margin-top: 3em;
+  text-align: center;
+  color: $color-very-dark-grayish-blue;
 }
