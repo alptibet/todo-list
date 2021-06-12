@@ -14,9 +14,9 @@
     background-color: $color-white;
     padding: 1.2rem 3rem;
     border-bottom: 1px solid $color-light-grayish-blue;
+    cursor: pointer;
 
     @include respond(tab-port) {
-      // width < 768px
       width: 90vw;
     }
 
@@ -35,7 +35,6 @@
         font-size: 1.8rem;
         padding: 1rem 2rem;
         color: $color-very-dark-grayish-blue;
-        cursor: pointer;
 
         &.dark {
           color: $color-light-grayish-blue-dark;

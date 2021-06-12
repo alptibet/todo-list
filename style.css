@@ -158,6 +158,7 @@ body {
   background-color: #fff;
   padding: 1.2rem 3rem;
   border-bottom: 1px solid #d2d3db;
+  cursor: pointer;
 }
 @media only screen and (max-width: 48em) {
   .todos__item {
@@ -178,7 +179,6 @@ body {
   font-size: 1.8rem;
   padding: 1rem 2rem;
   color: #484b6a;
-  cursor: pointer;
 }
 .todos__item-form p.dark {
   color: #cacde8;
