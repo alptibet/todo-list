@@ -170,8 +170,7 @@ let prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)').matche
 const themeSelectorIcon = document.querySelector('.header__icon img');
 const body = document.querySelector('body');
 const header = document.querySelector('.header');
-const textBox = document.querySelector('.todo__textbox');
-const inputLabel = document.querySelector('.label');
+const todoInfo = document.querySelector('.todo-info__items');
 
 export const addHandlerAutoSelectTheme = function () {
   if (prefersDarkScheme) renderDarkMode();
@@ -194,6 +193,7 @@ const renderLightMode = function () {
   const todoItems = todos.querySelectorAll('*');
   if (todoItems.length === 0) return;
   todoItems.forEach(item => item.classList.remove('dark'));
+  todoInfo.classList.remove('dark');
 };
 
 const renderDarkMode = function () {
@@ -204,6 +204,7 @@ const renderDarkMode = function () {
   const todoItems = todos.querySelectorAll('*');
   if (todoItems.length === 0) return;
   todoItems.forEach(item => item.classList.add('dark'));
+  todoInfo.classList.add('dark');
 };
 
 /*

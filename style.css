@@ -107,6 +107,10 @@ body.dark {
   background-color: #25273c;
   color: #cacde8;
 }
+.header__input .todo__textbox.dark:focus {
+  outline-width: 0;
+  caret-color: #cacde8;
+}
 .header__input .todo__textbox::placeholder {
   color: #9394a5;
 }
@@ -164,6 +168,10 @@ body {
   position: absolute;
   left: -1rem;
   top: 0.6rem;
+}
+.todos__item-form label.dark {
+  background-color: #25273c;
+  border: 1px solid #484b6a;
 }
 .todos__item-form label:after {
   content: url(/assets/icon-check.svg);
@@ -224,6 +232,9 @@ body {
   font-size: 1.4rem;
   border-bottom-right-radius: 6px;
   border-bottom-left-radius: 6px;
+}
+.todo-info__items.dark {
+  background-color: #25273c;
 }
 .todo-info .items-left {
   color: #9394a5;

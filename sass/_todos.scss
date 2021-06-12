@@ -47,6 +47,11 @@
         position: absolute;
         left: -1rem;
         top: 0.6rem;
+
+        &.dark {
+          background-color: $color-very-dark-desaturated-blue;
+          border: 1px solid $color-very-dark-grayish-blue;
+        }
       }
 
       label:after {

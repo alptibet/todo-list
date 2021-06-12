@@ -13,6 +13,9 @@
     font-size: 1.4rem;
     border-bottom-right-radius: 6px;
     border-bottom-left-radius: 6px;
+    &.dark {
+      background-color: $color-very-dark-desaturated-blue;
+    }
   }
 
   & .items-left {

@@ -89,6 +89,11 @@
       &.dark {
         background-color: $color-very-dark-desaturated-blue;
         color: $color-light-grayish-blue-dark;
+
+        &:focus {
+          outline-width: 0;
+          caret-color: $color-light-grayish-blue-dark;
+        }
       }
 
       &::placeholder {
