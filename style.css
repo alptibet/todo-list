@@ -299,7 +299,7 @@ body {
   color: #484b6a;
 }
 .todo-info .items-status :last-child {
-  color: #9394a5;
+  color: #484b6a;
 }
 .todo-info .items-status p {
   cursor: pointer;
@@ -310,7 +310,7 @@ body {
 }
 .todo-info .items-clear {
   cursor: pointer;
-  color: #484b6a;
+  color: #9394a5;
 }
 
 .hidden {
@@ -337,7 +337,7 @@ body {
     color: #484b6a;
   }
   .hidden :last-child {
-    color: #9394a5;
+    color: #484b6a;
   }
   .hidden p {
     cursor: pointer;

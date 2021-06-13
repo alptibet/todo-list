@@ -7,7 +7,7 @@ export const createToDoItem = function (data) {
     completed: false,
   };
 
-  todos.push(newToDo); //cannot figure out how to update state without modifying it
+  todos.push(newToDo);
 };
 
 const createUUID = function () {
@@ -21,19 +21,23 @@ const createUUID = function () {
 };
 
 export const completeTodo = function (todo) {
-  const copyTodos = [...todos];
-  const item = copyTodos.find(item => item.id === todo.id);
+  const item = todos.find(item => item.id === todo.id);
   item.completed = !item.completed;
 };
 
 export const calculateRemaining = function () {
-  const copyTodos = [...todos];
-  const remainingItems = copyTodos.filter(item => item.completed === true);
-  remaining = copyTodos.length - remainingItems.length;
+  const remainingItems = todos.filter(item => item.completed === false);
+  remaining = remainingItems.length;
 };
 
-export const clearCompleted = function () {
-  const copyTodos = [...todos];
-  const toClear = copyTodos.filter(item => item.completed === true);
-  return toClear;
+export const deleteToDo = function (todo) {
+  const item = todos.find(item => item.id === todo.id);
+  item.completed = true;
+  todos.splice(todos.indexOf(item), 1);
 };
+
+// export const clearCompleted = function () {
+//   const copyTodos = [...todos];
+//   const toClear = copyTodos.filter(item => item.completed === true);
+//   return toClear;
+// };
